@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../dist/output.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Zen Maru Gothic', sans-serif;
+        }
+    </style>
+    <title>記録</title>
+</head>
+
+<body class="bg-rose-100">
+
+
+    <div class="flex flex-col items-center">
+        <form action="input_back1.php" method="post">
+            <input type="hidden" name="u_id" value="<?= ($u_id); ?>">
+            <input type="hidden" name="tooth_name" value="<?= ($tooth_name); ?>">
+            <div class="flex flex-col items-center mt-10">
+                <label for="n_date" class="text-gray-600 pb-1 pl-4 text-center  mb-10">抜けた日</label>
+                <input type="date" name="n_date" class="m-auto w-64 h-10 p-2 rounded-md">
+            </div>
+            <div class="flex flex-col items-center mt-10">
+                <textarea id="text" rows="5" cols="31" name="memo1" placeholder="メモ欄"
+                    class="placeholder-slate-400 rounded-md"></textarea>
+            </div>
+            <div class="flex justify-center mt-10">
+                <input type="submit" value="登録" class="bg-rose-300 text-white text-sm text-center px-0 w-36 py-3 rounded-md m-2 mb-4">
+            </div>
+        </form>
+        <div class="flex justify-center">
+            <input type="submit" value="キャンセル" class="close1 bg-gray-400 text-white text-sm text-center px-0 w-36 py-3 rounded-md m-2 mb-4">
+        </div>
+    </div>
+
+    </div>
+</body>
+
+</html>

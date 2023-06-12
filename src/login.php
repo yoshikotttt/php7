@@ -1,11 +1,21 @@
 <?php
 
 session_start();
+// if (isset($_SESSION['errorMessage'])) {
+//     echo $_SESSION['errorMessage'];
+//     unset($_SESSION['errorMessage']); // エラーメッセージを表示したらセッションから削除する
+// }
+
 if (isset($_SESSION['errorMessage'])) {
-    echo $_SESSION['errorMessage'];
-    unset($_SESSION['errorMessage']); // エラーメッセージを表示したらセッションから削除する
+    $errorMessage = $_SESSION['errorMessage'];
+    unset($_SESSION['errorMessage']);
+} else {
+    $errorMessage = ""; // エラーメッセージがない場合は空文字列にする
 }
 
+//関数読み込み
+require('function.php');
+require_once('config.php');
 
 ?>
 
@@ -43,6 +53,7 @@ if (isset($_SESSION['errorMessage'])) {
         <form action="login_backend.php" method="post" class="max-w-sm mx-auto items-center">
             <div class="container space-y-4 px-12">
 
+               <div class="text-blue-600 pb-1 text-center pl-4 text-xs"><?=h($errorMessage);?></div>
                 <div class="text-center">
                     <p class="text-gray-600 pb-1 text-left pl-4">ログインID</p>
                     <input type="text" name="log_id" placeholder="ログインID" class="w-64 h-10 p-2 rounded-md">

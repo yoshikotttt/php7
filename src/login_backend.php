@@ -49,9 +49,9 @@ else{
 
     //ログイン失敗（logoutを経由して、リダイレクト?）
     //idとpasswordのどちらが間違っているかは言わない
-    $_SESSION["errorMessage"] = "ユーザー名またはパスワードが正しくありません。";
+    $_SESSION["errorMessage"] = "ユーザー名またはパスワードが正しくありません";
     
-    redirect("index.php");
+    redirect("login.php");
 
     // var_dump($_SESSION['errorMessage']);
 }

@@ -74,7 +74,7 @@ $_SESSION['position'] = $position;
         }
         header {
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
             width: 400px;
             margin: auto;
             padding-top: 15px;

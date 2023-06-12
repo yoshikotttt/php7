@@ -131,7 +131,7 @@ $ageMonths = $diff->m; // 年齢（月）
 
         header {
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
             width: 400px;
             margin: auto;
             padding-top: 15px;

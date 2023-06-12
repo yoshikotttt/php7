@@ -2,8 +2,9 @@
 
 session_start();
 
-$u_id = $_SESSION["u_id"];
+$u_id       = $_SESSION["u_id"];
 $tooth_name = $_SESSION['tooth_name'];
+$position   = $_SESSION['position'];
 
 //関数とパスワードの取得
 require('function.php');
@@ -120,7 +121,7 @@ $json_clinic = json_encode($clinic_v, JSON_UNESCAPED_UNICODE);
 
         header {
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
             width: 400px;
             margin: auto;
             padding-top: 15px;
@@ -153,11 +154,11 @@ $json_clinic = json_encode($clinic_v, JSON_UNESCAPED_UNICODE);
     <div id="main">
         <div class="mt-10 mb-10">
             <div class="title text-center mb-14"></div>
-            <div class="flex justify-center">
-                <div class="w-1/2 flex justify-center">
+            <div class="flex flex-col items-center">
+            
                     <div class="image img1"></div>
-                </div>
-                <div class="w-1/2 flex-col">
+                
+                
                     <br>
                     <div class="n_date"></div>
                     <br>
@@ -225,7 +226,14 @@ $json_clinic = json_encode($clinic_v, JSON_UNESCAPED_UNICODE);
 
 
     </div>
-
+    <div class="flex mt-20">
+        <a class="inline mx-auto " href="input.php?position=<?= h($position); ?>"><img src="../myimg/backIcon.png" width="60px" alt=""></a>
+    </div>
+    <footer class="py-4">
+        <div class="container mx-auto mt-6">
+            <p class="text-center text-xs">© su. All rights reserved.</p>
+        </div>
+    </footer>
 
 
 
@@ -235,7 +243,7 @@ $json_clinic = json_encode($clinic_v, JSON_UNESCAPED_UNICODE);
         //     if (jsonDataImg.length === 0 && jsonDataClinic.length === 0 && jsonDataRecords.length === 0) {
         //         $('#main').hide();
         //         alert("データがありません");
-      
+
         //     }
         // });
         const jsonDataRecords = <?= ($json_records); ?>;

@@ -72,6 +72,19 @@ $_SESSION['position'] = $position;
         body {
             font-family: 'Zen Maru Gothic', sans-serif;
         }
+
+        header {
+            display: flex;
+            justify-content: space-around;
+            width: 400px;
+            margin: auto;
+            padding-top: 15px;
+            margin-bottom: 40px;
+        }
+
+        .icons img {
+            margin-left: 10px;
+        }
     </style>
     <title>記録</title>
 </head>
@@ -170,7 +183,7 @@ $_SESSION['position'] = $position;
             <form action="input_img.php" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="tooth_name" value="<?= ($tooth_name); ?>">
                 <input type="file" name="img" accept=".png,.jpg,.jpeg,.pdf,.doc">
-            <p class="img_style flex justify-center mx-auto"><img src="" alt="" width="150px"></p>
+                <p class="img_style flex justify-center mx-auto"><img src="" alt="" width="150px"></p>
 
                 <div class="flex justify-center mt-10">
                     <input type="submit" value="登録" class="bg-rose-300 text-white text-sm text-center px-0 w-36 py-3 rounded-md m-2 mb-4">
@@ -185,9 +198,16 @@ $_SESSION['position'] = $position;
 
     <!-- 最初から見えている部分 -->
 
-    <header class="h-13 flex">
-        <a href = top.php><img src="../myimg/logo.png" class="ml-4 mt-4"  width="60px" alt=""></a>
+    <header class="h-16">
+
+        <a href=top.php><img src="../myimg/logo.png" class="inline" width="60px" alt=""></a>
+
+        <div class="icons flex">
+            <a href="top.php"><img src="../myimg/homeIcon.png" width="30px" alt=""></a>
+            <a href="mypage.php"><img src="../myimg/manIcon.png" width="30px" alt=""></a>
+            <a href="logout.php"><img src="../myimg/logoutIcon.png" width="30px" alt=""></a>
     </header>
+
 
     <p class="text-center mt-20 mb-16"><?= ($tooth_name); ?></p>
     <div class="flex flex-wrap justify-center">

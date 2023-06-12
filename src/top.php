@@ -81,6 +81,7 @@ $ageMonths = $diff->m; // 年齢（月）
     <style>
         body {
             font-family: 'Zen Maru Gothic', sans-serif;
+            background-color: #dff1fe;
         }
 
 
@@ -113,12 +114,7 @@ $ageMonths = $diff->m; // 年齢（月）
             height: 30px;
             color: #dff1fe;
             opacity: 0.8;
-
-
         }
-
-
-
         .image-container {
             position: absolute;
             top: 0;
@@ -128,14 +124,33 @@ $ageMonths = $diff->m; // 年齢（月）
         .image {
             height: 30px;
         }
+
+        header {
+            display: flex;
+            justify-content: space-around;
+            width: 400px;
+            margin: auto;
+            padding-top: 15px;
+        }
+
+        .icons img{
+            margin-left: 10px;
+        }
     </style>
     <title>TOP</title>
 </head>
 
 <body class="bg-sky-100">
 
-    <header class="h-13 flex">
-        <a href=top.php><img src="../myimg/logo.png" class="ml-4 mt-4" width="60px" alt=""></a>
+    <header class="h-16">
+
+        <a href=top.php><img src="../myimg/logo.png" class="inline" width="60px" alt=""></a>
+
+        <div class="icons flex">
+            <a href="top.php"><img src="../myimg/homeIcon.png" width="30px" alt=""></a>
+            <a href="mypage.php"><img src="../myimg/manIcon.png" width="30px" alt=""></a>
+            <a href="logout.php"><img src="../myimg/logoutIcon.png" width="30px" alt=""></a>
+
     </header>
     <div class="">
         <div class="text-x1 font-bold text-center mt-5"><?= h($n_name); ?>さんの歯　　<?= h($ageYears); ?>歳<?= h($ageMonths); ?>ヶ月</div>
@@ -147,18 +162,22 @@ $ageMonths = $diff->m; // 年齢（月）
     <div id="container"></div>
     <!-- <div id="container" class=" mx-auto grid grid-cols-8 grid-rows-10 bg-[url(../myimg/tooth1.png] bg-no-repeat bg-cover w-[280px] h-[350px] sm:w-auto sm:h-auto"></div> -->
 
+    
+    <br>
+    <br>
+    <br>
+
     <div class="flex items-center justify-center mt-8 ">
         <img src="../myimg/already.png" alt="" width="30px">
-        <div class="ml-4 mt-10 mb-10 text-center text-gray-500 text-sm">生え変わり済み</div>
+        <div class="ml-4  text-center text-gray-500 text-sm">　生え変わり済み</div>
     </div>
+
     <div class="flex items-center justify-center ">
         <img src="../myimg/new.png" alt="" width="30px">
-        <div class="ml-4 mt-2 mb-5 text-center text-gray-500 text-sm">生えるの待ち</div>
+        <div class="ml-4 mt-5 mb-5 text-center text-gray-500 text-sm">　生えるの待ち</div>
     </div>
 
-<a href="logout.php">ログアウト</a>
 
-<a href="mypage.php">マイページ</a>
 
     <footer class="py-4">
         <div class="container mx-auto mt-20">

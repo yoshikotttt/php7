@@ -117,12 +117,35 @@ $json_clinic = json_encode($clinic_v, JSON_UNESCAPED_UNICODE);
         .img1 {
             width: 150px;
         }
+
+        header {
+            display: flex;
+            justify-content: space-around;
+            width: 400px;
+            margin: auto;
+            padding-top: 15px;
+        }
+
+        .icons img{
+            margin-left: 10px;
+        }
     </style>
 </head>
 
 <body class="bg-sky-100">
-    <header class="h-13 flex">
-        <a href=top.php><img src="../myimg/logo.png" class="ml-4 mt-4" width="60px" alt=""></a>
+
+
+
+
+
+    <header class="h-16">
+
+        <a href=top.php><img src="../myimg/logo.png" class="inline" width="60px" alt=""></a>
+
+        <div class="icons flex">
+            <a href="top.php"><img src="../myimg/homeIcon.png" width="30px" alt=""></a>
+            <a href="mypage.php"><img src="../myimg/manIcon.png" width="30px" alt=""></a>
+            <a href="logout.php"><img src="../myimg/logoutIcon.png" width="30px" alt=""></a>
     </header>
 
     <div class="mt-10 mb-10">

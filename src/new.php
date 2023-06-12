@@ -14,6 +14,7 @@
     <style>
         body {
             font-family: 'Zen Maru Gothic', sans-serif;
+            background-color: #dff1fe;
         }
     </style>
     <title>トップページ</title>

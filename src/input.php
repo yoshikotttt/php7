@@ -72,6 +72,18 @@ $_SESSION['position'] = $position;
         body {
             font-family: 'Zen Maru Gothic', sans-serif;
         }
+        header {
+            display: flex;
+            justify-content: space-around;
+            width: 400px;
+            margin: auto;
+            padding-top: 15px;
+            padding-bottom: 15px;
+        }
+
+        .icons img{
+            margin-left: 10px;
+        }
     </style>
     <title>記録</title>
 </head>
@@ -185,8 +197,16 @@ $_SESSION['position'] = $position;
 
     <!-- 最初から見えている部分 -->
 
-    <header class="h-13 flex">
-        <a href = top.php><img src="../myimg/logo.png" class="ml-4 mt-4"  width="60px" alt=""></a>
+  
+    <header class="h-13 ">
+        <div class="logo items-center">
+            <a href=top.php><img src="../myimg/logo.png" class="" width="60px" alt=""></a>
+        </div>
+        <div class="icons flex items-center">
+            <a href="top.php"><img src="../myimg/homeIcon.png" width="30px" alt=""></a>
+            <a href="mypage.php"><img src="../myimg/manIcon.png" width="30px" alt=""></a>
+            <a href="logout.php"><img src="../myimg/logoutIcon.png" width="30px" alt=""></a>
+        </div>
     </header>
 
     <p class="text-center mt-20 mb-16"><?= ($tooth_name); ?></p>

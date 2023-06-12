@@ -117,81 +117,111 @@ $json_clinic = json_encode($clinic_v, JSON_UNESCAPED_UNICODE);
         .img1 {
             width: 150px;
         }
+
+        header {
+            display: flex;
+            justify-content: space-around;
+            width: 400px;
+            margin: auto;
+            padding-top: 15px;
+            padding-bottom: 15px;
+        }
+
+        .icons img {
+            margin-left: 10px;
+        }
     </style>
 </head>
 
 <body class="bg-sky-100">
-    <header class="h-13 flex">
-        <a href=top.php><img src="../myimg/logo.png" class="ml-4 mt-4" width="60px" alt=""></a>
+    <header class="h-13 ">
+        <div class="logo items-center">
+            <a href=top.php><img src="../myimg/logo.png" class="" width="60px" alt=""></a>
+        </div>
+        <div class="icons flex items-center">
+            <a href="top.php"><img src="../myimg/homeIcon.png" width="30px" alt=""></a>
+            <a href="mypage.php"><img src="../myimg/manIcon.png" width="30px" alt=""></a>
+            <a href="logout.php"><img src="../myimg/logoutIcon.png" width="30px" alt=""></a>
+        </div>
     </header>
 
-    <div class="mt-10 mb-10">
-        <div class="title text-center mb-14"></div>
-        <div class="flex justify-center">
-            <div class="w-1/2 flex justify-center">
-                <div class="image img1"></div>
-            </div>
-            <div class="w-1/2 flex-col">
-                <br>
-                <div class="n_date"></div>
-                <br>
-                <div class="h_date"></div>
+    <!-- <div id="data_none " class="flex items-center justify-center h-screen ">
+        <div class="text-center h-1/3">
+            データが未登録です
+        </div>
+    </div> -->
+    <div id="main">
+        <div class="mt-10 mb-10">
+            <div class="title text-center mb-14"></div>
+            <div class="flex justify-center">
+                <div class="w-1/2 flex justify-center">
+                    <div class="image img1"></div>
+                </div>
+                <div class="w-1/2 flex-col">
+                    <br>
+                    <div class="n_date"></div>
+                    <br>
+                    <div class="h_date"></div>
+                </div>
             </div>
         </div>
-    </div>
 
 
-    <div>
-        <!-- タブのリスト -->
-        <ul class="flex justify-center items-center gap-2 text-sm font-medium ">
-            <!-- class1 タブ -->
-            <li>
-                <a href="#" class="class1 selected inline-flex cursor-pointer items-center gap-2 rounded-lg px-3 py-2 hover:bg-sky-200 text-gray-400 hover:text-gray-700">メモ</a>
-            </li>
-            <!-- class2 タブ -->
-            <li>
-                <a href="#" class="class2 inline-flex cursor-pointer items-center gap-2 rounded-lg px-3 py-2 hover:bg-sky-200 text-gray-400 hover:text-gray-700">受診履歴</a>
-            </li>
-        </ul>
-        <!-- タブのコンテンツ -->
-        <div class="py-3">
-            <!-- class1 コンテンツ -->
-            <div id="class1">
-                <div id="memo1" class="hidden bg-amber-100 w-72 p-4 mx-auto my-4 rounded-md ">
-                    <p class="text-sm text-gray-500 mb-2">抜けた日のメモ</p>
-                    <div class="memo1"></div>
-                </div>
-                <div  id="memo2"  class="hidden bg-amber-100 w-72 p-4 mx-auto my-4 rounded-md">
-                    <p class="text-sm text-gray-500 mb-2">生えた日のメモ</p>
-                    <div class="memo2"></div>
-                </div>
-            </div>
-            <!-- class2 コンテンツ -->
-            <div id="class2" class="hidden">
-                <?php foreach ($clinic_v as $v) { ?>
-
-                    <div class=" bg-amber-100 w-72 p-4 mx-auto my-4 rounded-md  ">
-                        <div class="">
-                            <?php $j_date = $v["j_date"];
-                            $datetime = new Datetime($j_date);
-                            $j_formattedDate = $datetime->format('Y年m月d日'); ?>
-                            <?= h($j_formattedDate); ?>
-                        </div>
-                        <div class=""> <?= h($v["clinic_name"]); ?></div>
+        <div>
+            <!-- タブのリスト -->
+            <ul class="flex justify-center items-center gap-2 text-sm font-medium ">
+                <!-- class1 タブ -->
+                <li>
+                    <a href="#" class="class1 selected inline-flex cursor-pointer items-center gap-2 rounded-lg px-3 py-2 hover:bg-sky-200 text-gray-400 hover:text-gray-700">メモ</a>
+                </li>
+                <!-- class2 タブ -->
+                <li>
+                    <a href="#" class="class2 inline-flex cursor-pointer items-center gap-2 rounded-lg px-3 py-2 hover:bg-sky-200 text-gray-400 hover:text-gray-700">受診履歴</a>
+                </li>
+            </ul>
+            <!-- タブのコンテンツ -->
+            <div class="py-3">
+                <!-- class1 コンテンツ -->
+                <div id="class1">
+                    <div id="memo1" class="hidden bg-amber-100 w-72 p-4 mx-auto my-4 rounded-md ">
+                        <p class="text-sm text-gray-500 mb-2">抜けた日のメモ</p>
+                        <div class="memo1"></div>
                     </div>
-                <?php } ?>
+                    <div id="memo2" class="hidden bg-amber-100 w-72 p-4 mx-auto my-4 rounded-md">
+                        <p class="text-sm text-gray-500 mb-2">生えた日のメモ</p>
+                        <div class="memo2"></div>
+                    </div>
+                </div>
+                <div id="memo1-2" class=" text-center mt-10">
+                    <p class="">未登録</p>
 
-                <div id="default_clinic" class="hidden text-center mt-10">
-                <p class="">データがありません</p>
+                </div>
+                <!-- class2 コンテンツ -->
+                <div id="class2" class="hidden">
+                    <?php foreach ($clinic_v as $v) { ?>
 
-            </div>
+                        <div class=" bg-amber-100 w-72 p-4 mx-auto my-4 rounded-md  ">
+                            <div class="">
+                                <?php $j_date = $v["j_date"];
+                                $datetime = new Datetime($j_date);
+                                $j_formattedDate = $datetime->format('Y年m月d日'); ?>
+                                <?= h($j_formattedDate); ?>
+                            </div>
+                            <div class=""> <?= h($v["clinic_name"]); ?></div>
+                        </div>
+                    <?php } ?>
 
-           
+                    <div id="default_clinic" class=" text-center mt-10">
+                        <p class="">データがありません</p>
+
+                    </div>
+
+
+                </div>
+
             </div>
 
         </div>
-
-    </div>
 
 
     </div>
@@ -201,12 +231,21 @@ $json_clinic = json_encode($clinic_v, JSON_UNESCAPED_UNICODE);
 
     <script src="jquery-3.6.0.min.js"></script>
     <script>
+        // $(document).ready(function() {
+        //     if (jsonDataImg.length === 0 && jsonDataClinic.length === 0 && jsonDataRecords.length === 0) {
+        //         $('#main').hide();
+        //         alert("データがありません");
+      
+        //     }
+        // });
         const jsonDataRecords = <?= ($json_records); ?>;
         console.log(jsonDataRecords);
         const jsonDataClinic = <?= ($json_clinic); ?>;
         console.log(jsonDataClinic);
         const jsonDataImg = <?= ($json_img); ?>;
         console.log(jsonDataImg);
+
+
 
         // for (let i = 0; i < jsonData.length; i++) {
         //     const value = jsonData[i].clinic_name;
@@ -219,12 +258,48 @@ $json_clinic = json_encode($clinic_v, JSON_UNESCAPED_UNICODE);
         const h_date = jsonDataRecords[0].h_date;
         const memo1 = jsonDataRecords[0].memo1;
         const memo2 = jsonDataRecords[0].memo2;
-        let img;
-        if (jsonDataImg.length > 0) {
-            img = jsonDataImg[0].img;
-        } else {
-            img = ""; // データが存在しない場合は空文字列として扱うなど、適切なデフォルト値をセットする
-        }
+
+        // let img;
+        // if (jsonDataImg.length > 0) {
+        //     img = jsonDataImg[0].img;
+        // } else {
+        //     img = ""; // データが存在しない場合は空文字列として扱うなど、適切なデフォルト値をセットする
+        // }
+
+        // let t_name;
+        // if (jsonDataRecords.length > 0) {
+        //     img = jsonDataImg[0].tooth_name;
+        // } else {
+        //     t_name = ""; // データが存在しない場合は空文字列として扱うなど、適切なデフォルト値をセットする
+        // }
+
+        // let n_date;
+        // if (jsonDataRecords.length > 0) {
+        //     img = jsonDataImg[0].n_date;
+        // } else {
+        //     n_date = ""; // データが存在しない場合は空文字列として扱うなど、適切なデフォルト値をセットする
+        // }
+
+        // let h_date;
+        // if (jsonDataRecords.length > 0) {
+        //     img = jsonDataImg[0]. h_date;
+        // } else {
+        //     h_date = ""; // データが存在しない場合は空文字列として扱うなど、適切なデフォルト値をセットする
+        // }
+
+        // let memo1;
+        // if (jsonDataRecords.length > 0) {
+        //     img = jsonDataImg[0].memo1;
+        // } else {
+        //     memo1 = ""; // データが存在しない場合は空文字列として扱うなど、適切なデフォルト値をセットする
+        // }
+        // let memo2;
+        // if (jsonDataRecords.length > 0) {
+        //     img = jsonDataImg[0].memo2;
+        // } else {
+        //     memo2 = ""; // データが存在しない場合は空文字列として扱うなど、適切なデフォルト値をセットする
+        // }
+
 
 
         //フォーマットしたデータ
@@ -253,6 +328,8 @@ $json_clinic = json_encode($clinic_v, JSON_UNESCAPED_UNICODE);
 
 
         $(document).ready(function() {
+
+
             $(".title").text(t_name + "の記録");
             $(".memo1").text(memo1);
             $(".memo2").text(memo2);
@@ -279,15 +356,17 @@ $json_clinic = json_encode($clinic_v, JSON_UNESCAPED_UNICODE);
                 $('.class1').addClass("selected");
             });
 
-            if(jsonDataClinic.length === 0){
-                $('#default_clinic').removeClass("hidden");
+            if (jsonDataClinic.length > 0) {
+                $('#default_clinic').addClass("hidden");
             }
 
-            if(jsonDataRecords[0].memo1 !== null && jsonDataRecords[0].memo1 !== ""){
+            if (jsonDataRecords[0].memo1 !== null && jsonDataRecords[0].memo1 !== "") {
                 $('#memo1').removeClass("hidden");
+                $('#memo1-2').addClass("hidden");
             }
-            if(jsonDataRecords[0].memo2 !== null && jsonDataRecords[0].memo2 !== ""){
+            if (jsonDataRecords[0].memo2 !== null && jsonDataRecords[0].memo2 !== "") {
                 $('#memo2').removeClass("hidden");
+                $('#memo1-2').addClass("hidden");
             }
         });
 
@@ -300,16 +379,16 @@ $json_clinic = json_encode($clinic_v, JSON_UNESCAPED_UNICODE);
             let currentIndex = 0; // 現在のインデックスを保持
             // ループ処理
             while (true) {
-                if(jsonDataImg.length >0){
-                const imageName = jsonDataImg[currentIndex].img;
-                const imagePath = imageDir + imageName; // 画像のフルパス
-                const imgTag = $("<img>"); // <img>タグを動的に作成
-                imgTag.attr("src", imagePath);
-                imageElement.empty().append(imgTag);}
-                else{
+                if (jsonDataImg.length > 0) {
+                    const imageName = jsonDataImg[currentIndex].img;
+                    const imagePath = imageDir + imageName; // 画像のフルパス
+                    const imgTag = $("<img>"); // <img>タグを動的に作成
+                    imgTag.attr("src", imagePath);
+                    imageElement.empty().append(imgTag);
+                } else {
                     const defaultImagePath = "../myimg/default.png";
                     const defaultImgTag = $("<img>");
-                    defaultImgTag.attr("src",defaultImagePath);
+                    defaultImgTag.attr("src", defaultImagePath);
                     imageElement.empty().append(defaultImgTag);
                 }
 

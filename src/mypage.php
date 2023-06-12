@@ -52,6 +52,18 @@ $json_records = json_encode($row, JSON_UNESCAPED_UNICODE);
         body {
             font-family: 'Zen Maru Gothic', sans-serif;
         }
+        header {
+            display: flex;
+            justify-content: space-around;
+            width: 400px;
+            margin: auto;
+            padding-top: 15px;
+            padding-bottom: 15px;
+        }
+
+        .icons img{
+            margin-left: 10px;
+        }
     </style>
     <title>マイページ</title>
 </head>
@@ -87,8 +99,16 @@ $json_records = json_encode($row, JSON_UNESCAPED_UNICODE);
 
 
     <!-- ヘッダー -->
-    <header class="h-12 flex">
-
+ 
+    <header class="h-13 ">
+        <div class="logo items-center">
+            <a href=top.php><img src="../myimg/logo.png" class="" width="60px" alt=""></a>
+        </div>
+        <div class="icons flex items-center">
+            <a href="top.php"><img src="../myimg/homeIcon.png" width="30px" alt=""></a>
+            <a href="mypage.php"><img src="../myimg/manIcon.png" width="30px" alt=""></a>
+            <a href="logout.php"><img src="../myimg/logoutIcon.png" width="30px" alt=""></a>
+        </div>
     </header>
 
     <!-- メインコンテンツ -->
@@ -99,7 +119,7 @@ $json_records = json_encode($row, JSON_UNESCAPED_UNICODE);
             <div class="flex flex-col">
                 <div class=" text-center">
                     <p class="text-gray-600 pb-1 mb-3  text-sm">ニックネーム</p>
-                    <p class="mb-8 border-b border-gray-700 pb-2"><?= h($row["n_name"]); ?></p>
+                    <p class="mb-8  pb-2"><?= h($row["n_name"]); ?></p>
                  
                 </div>
                 <div class="text-center">

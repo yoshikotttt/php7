@@ -26,7 +26,7 @@ if (isset($_SESSION['errorMessage'])) {
             font-family: 'Zen Maru Gothic', sans-serif;
         }
     </style>
-    <title>トップページ</title>
+    <title>ログイン</title>
 </head>
 
 <body class="bg-sky-200">

@@ -158,7 +158,7 @@ $ageMonths = $diff->m; // 年齢（月）
 
 <a href="logout.php">ログアウト</a>
 
-
+<a href="mypage.php">マイページ</a>
 
     <footer class="py-4">
         <div class="container mx-auto mt-20">

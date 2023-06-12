@@ -23,7 +23,7 @@
 
     <!-- ヘッダー -->
     <header class="h-12 flex">
-      
+
     </header>
 
     <!-- メインコンテンツ -->
@@ -43,7 +43,7 @@
                 </div>
                 <div class="text-center">
                     <p class="text-gray-600 pb-1 text-left pl-4">ニックネーム</p>
-                    <input type="text" name="n_name" placeholder="例) てか" class="w-64 h-10 p-2  rounded-md">
+                    <input type="text" name="n_name" placeholder="例) とらち" class="w-64 h-10 p-2  rounded-md">
                     <p class="text-gray-600 pb-1 text-xs text-left pl-4">(後から変更できます)</p>
                 </div>
                 <div class="text-center">
@@ -68,7 +68,7 @@
     <script>
         $(document).ready(function() {
             // Ajaxリクエストを送信して重複チェックを行う
-            $("#submitBtn").on("click", function() {
+            $("#submitBtn").on("click", function(event) {
                 // alert("ok");
                 event.preventDefault(); //フォーム送信をキャンセルしている
 
@@ -83,13 +83,19 @@
                     dataType: "json",
                     success: function(response) {
                         if (response.duplicate) {
-                            alert("ログインIDが既に使用されています");
+                            setTimeout(function() {
+                                alert("ログインIDが既に使用されています");
+                            }, 100);
                         } else {
-                           $("form").submit(); //フォームを送信
+                            setTimeout(function() {
+                                $("form").submit(); //フォームを送信
+                            }, 100);
                         }
                     },
                     error: function() {
-                        alert("エラーが発生しました");
+                        setTimeout(function() {
+                            alert("エラーが発生しました");
+                        }, 100);
                     }
                 });
             });

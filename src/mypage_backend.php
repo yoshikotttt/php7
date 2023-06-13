@@ -37,6 +37,6 @@ if($status==false){
     sql_error($stmt);
 }else{
     // //リダイレクト時にニックネームの表示を変えるためにセッションデータを持つ→再読み込みするので不要
-    // $_SESSION['n_name'] = $n_name; 
+    $_SESSION['n_name'] = $n_name; 
     redirect("mypage.php");
 }

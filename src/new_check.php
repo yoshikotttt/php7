@@ -1,6 +1,6 @@
 <?php
 
-
+//ログインIDの重複確認
 
 
 //関数とパスワードの取得
@@ -14,7 +14,7 @@ if (!isset($_POST["log_id"]) || $_POST["log_id"] == "") {
 }
 
 
-$log_id      = $_POST["log_id"];
+$log_id = $_POST["log_id"];
 
 //db接続
 $pdo = db_conn($database_name, $host, $user, $database_password);

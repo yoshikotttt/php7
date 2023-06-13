@@ -14,7 +14,6 @@ require_once('config.php');
 
 
 //POST データ取得
-
 $tooth_name =$_POST["tooth_name"];
 $img = $_FILES["img"]["name"];
 

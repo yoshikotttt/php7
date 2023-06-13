@@ -2,14 +2,16 @@
 
 session_start();
 
+
 $position=$_SESSION['position'];
-$u_id = $_SESSION["u_id"];   
+$u_id = $_SESSION["u_id"];  
+
 //関数とパスワードの取得
 require('function.php');
 require_once('config.php');
 
-//入力チェック
 
+//入力チェック  ＊c_memoはnullの設定あり
 if (!isset($_POST["j_date"]) || $_POST["j_date"] == "") {
     exit("ParamError:date");
 }

@@ -3,7 +3,7 @@
 session_start();
 
 $n_name = $_SESSION["n_name"];
-$u_id = $_SESSION["u_id"];
+$u_id = $_SESSION["u_id"];  //これをそのままsqlで使う
 
 
 //関数とパスワードの取得
@@ -13,11 +13,6 @@ require_once('config.php');
 //SessionCheck関数をログインしないと見れないページ全てに入れる
 sschk();
 
-
-
-
-//選択されたidを取得
-// $select_id = $_GET["id"];
 
 
 //DB接続後のdb_connをもらう
@@ -83,7 +78,6 @@ $ageMonths = $diff->m; // 年齢（月）
             font-family: 'Zen Maru Gothic', sans-serif;
         }
 
-
         #container>div {
             /* ボーダーはここで消す */
             /* border: 0.5px solid #a19c9c;  */
@@ -92,7 +86,6 @@ $ageMonths = $diff->m; // 年齢（月）
             /* width: 100px;
         height: 100px; */
         }
-
 
         #container {
             margin: auto;
@@ -113,11 +106,7 @@ $ageMonths = $diff->m; // 年齢（月）
             height: 30px;
             color: #dff1fe;
             opacity: 0.8;
-
-
         }
-
-
 
         .image-container {
             position: absolute;
@@ -138,7 +127,7 @@ $ageMonths = $diff->m; // 年齢（月）
             padding-bottom: 15px;
         }
 
-        .icons img{
+        .icons img {
             margin-left: 10px;
         }
     </style>
@@ -185,11 +174,11 @@ $ageMonths = $diff->m; // 年齢（月）
     </footer>
     <script src="jquery-3.6.0.min.js"></script>
     <script>
-        //jsで作った要素に関する動きは、$(document).ready(function() {この中に全部書く})
+        //読み込みと同時に実行する関数
+        //作った要素に関する動きは、$(document).ready(function() {この中に全部書く})
         $(document).ready(function() {
             const jsonData = <?= ($json); ?>;
             // console.log(jsonData);
-
             const container = $("#container");
 
             //個別のIDを持ったセルを80個作る、配置はgrid
@@ -200,17 +189,15 @@ $ageMonths = $diff->m; // 年齢（月）
                     cell.text(`${i}-${j}`);
                     container.append(cell);
 
+                    //セルに画像を表示させる
+                    //jsonDataの画像のデータが保存されてるとこに値があるか確認している
                     const cellValue = `${i}-${j}`;
                     const cellData = jsonData.filter(item => item[3] === cellValue);
-                    // ここでセルにデータを追加するなどの処理を行います
-                    // console.log(cellData);
 
-
-                    // const filteredData = jsonData.filter(item => item.h_date === null);
-                    // console.log(filteredData);
                     if (cellData.length > 0) {
                         cellData.forEach(data => {
                             const imageContainer = $("<div>").addClass('image-container');
+                            //h_dataがあるかないか（生えた日が入っているかどうか）で表示する画像を変えている
                             const image = $("<img>").addClass("image opacity-50").attr("src", data.h_date == null ? "../myimg/new.png" : "../myimg/already.png").attr("alt", "Image");
                             imageContainer.append(image);
                             cell.append(imageContainer);
@@ -218,6 +205,19 @@ $ageMonths = $diff->m; // 年齢（月）
                     }
                 }
             }
+          
+            // const image = $("<img>").addClass("image opacity-50").attr("src", data.h_date == null ? "../myimg/new.png" : "../myimg/already.png").attr("alt", "Image");
+            //                 imageContainer.append(image);
+            //                 cell.append(imageContainer);
+
+                // if文で書くと上記の部分が下記になる、上の書き方の方が簡単
+            // if (data.h_date == null) {
+            //   const image = $("<img>").addClass('image').attr("src", "./myimg/poti.png").attr("alt", "Image");
+            //   cell.append(image);
+            //   }else{
+            //    const image = $("<img>").addClass('image').attr("src", "./myimg/icon.png").attr("alt", "Image");
+            //    cell.append(image);
+            //   }
 
 
 
@@ -268,15 +268,6 @@ $ageMonths = $diff->m; // 年齢（月）
 
             });
         });
-
-        //if文で書くとこう
-        // if (data.h_date == null) {
-        //   const image = $("<img>").addClass('image').attr("src", "./myimg/poti.png").attr("alt", "Image");
-        //   cell.append(image);
-        //   }else{
-        //    const image = $("<img>").addClass('image').attr("src", "./myimg/icon.png").attr("alt", "Image");
-        //    cell.append(image);
-        //   }
     </script>
 </body>
 

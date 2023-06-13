@@ -123,6 +123,7 @@ $_SESSION['position'] = $position;
 
         <div class="flex flex-col items-center">
             <form action="input_back2.php" method="post">
+            <input type="hidden" name="u_id" value="<?= ($u_id); ?>">
                 <input type="hidden" name="tooth_name" value="<?= ($tooth_name); ?>">
                 <div class="flex flex-col items-center mt-4">
                     <label for="h_date" class="text-gray-600 pb-1 pl-4 text-center  mb-5">生えた日</label>
@@ -235,6 +236,7 @@ $_SESSION['position'] = $position;
 
 
     <script src="jquery-3.6.0.min.js"></script>
+    <script src="main.js"></script>
     <script>
         $('input[type=file]').change(function() {
             const file = $(this).prop('files')[0];
@@ -253,18 +255,6 @@ $_SESSION['position'] = $position;
     </script>
     <script>
         //モーダルの表示と非表示
-
-        function openModal(buttonSelector, modalSelector) {
-            $(buttonSelector).on("click", function() {
-                $('#overlay,' + modalSelector).fadeIn();
-            });
-        }
-
-        function closeModal(buttonSelector, modalSelector) {
-            $(buttonSelector).on('click', function() {
-                $('#overlay, ' + modalSelector).fadeOut();
-            });
-        }
         $(function() {
             openModal(".button-open1", '.modal-window1');
             closeModal(".close1", ".modal-window1");

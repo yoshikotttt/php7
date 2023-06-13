@@ -1,6 +1,6 @@
 <?php
 
-//更新
+//ニックネームの更新
 
 session_start();
 
@@ -36,6 +36,7 @@ $status = $stmt->execute();
 if($status==false){
     sql_error($stmt);
 }else{
-    $_SESSION['n_name'] = $n_name;
+    // //リダイレクト時にニックネームの表示を変えるためにセッションデータを持つ→再読み込みするので不要
+    // $_SESSION['n_name'] = $n_name; 
     redirect("mypage.php");
 }

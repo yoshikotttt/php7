@@ -1,11 +1,8 @@
 <?php
 
 session_start();
-// if (isset($_SESSION['errorMessage'])) {
-//     echo $_SESSION['errorMessage'];
-//     unset($_SESSION['errorMessage']); // エラーメッセージを表示したらセッションから削除する
-// }
 
+//エラーメッセージのセッションデータがあるか確認、なくてもエラーにならないようにあることにする
 if (isset($_SESSION['errorMessage'])) {
     $errorMessage = $_SESSION['errorMessage'];
     unset($_SESSION['errorMessage']);
@@ -53,6 +50,7 @@ require_once('config.php');
         <form action="login_backend.php" method="post" class="max-w-sm mx-auto items-center">
             <div class="container space-y-4 px-12">
 
+            <!-- エラーメッセージがあれば表示される、なくても空文字列が表示されている -->
                <div class="text-blue-600 pb-1 text-center pl-4 text-xs"><?=h($errorMessage);?></div>
                 <div class="text-center">
                     <p class="text-gray-600 pb-1 text-left pl-4">ログインID</p>

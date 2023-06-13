@@ -47,13 +47,12 @@ if($pw){    //if($pw==true)と同じ＝＝＝ログイン成功
 }
 else{
 
-    //ログイン失敗（logoutを経由して、リダイレクト?）
-    //idとpasswordのどちらが間違っているかは言わない
+    //ログイン失敗（logoutを経由して、リダイレクト?） idとpasswordのどちらが間違っているかは言わない
+    //後で表示するためにセッションデータを持たせる
     $_SESSION["errorMessage"] = "ユーザー名またはパスワードが正しくありません";
     
     redirect("login.php");
 
-    // var_dump($_SESSION['errorMessage']);
 }
 
 exit();

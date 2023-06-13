@@ -1,15 +1,18 @@
 <?php
+//抜けた日登録用php
+
 
 session_start();
 
+//リダイレクトのURL用
 $position=$_SESSION['position'];
 
 //関数とパスワードの取得
 require('function.php');
 require_once('config.php');
 
-//入力チェック
 
+//入力チェック
 if (!isset($_POST["n_date"]) || $_POST["n_date"] == "") {
     exit("ParamError:date");
 }
@@ -21,7 +24,7 @@ $u_id = $_POST["u_id"];
 $tooth_name =$_POST["tooth_name"];
 $n_date = $_POST["n_date"];
 $memo1 = $_POST["memo1"];
-$n_date = date("Y-m-d", strtotime($n_date)); 
+$n_date = date("Y-m-d", strtotime($n_date)); //Hisがいらなかったのでこれをしたけど不要かも
 
 
 //DB接続後のdb_connをもらう
@@ -47,6 +50,7 @@ $status = $stmt->execute();
 if($status==false){
     sql_error($stmt);
 }else{
-    redirect("input.php?position={$position}");
+    redirect("input.php?position={$position}"); //入力画面（positionの値を持ったURL)に戻る
+
 }
 

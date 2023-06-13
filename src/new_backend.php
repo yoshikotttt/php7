@@ -1,6 +1,6 @@
 <?php
 
-
+//新規登録用
 
 
 //関数とパスワードの取得
@@ -22,7 +22,7 @@ if (!isset($_POST["n_name"]) || $_POST["n_name"] == "") {
 }
 
 
-//データ取得
+//データ取得 別のやり方
 
 // $log_id   = filter_input(INPUT_POST, "log_id");
 // $password  = filter_input(INPUT_POST, "password");
@@ -33,7 +33,7 @@ if (!isset($_POST["n_name"]) || $_POST["n_name"] == "") {
 $log_id      = $_POST["log_id"];
 $password    = $_POST["password"];
 $n_name      = $_POST["n_name"];
-$birthday      = $_POST["birthday"];
+$birthday    = $_POST["birthday"];
 $password    = password_hash($password, PASSWORD_DEFAULT); //ハッシュ化
 
 //db接続

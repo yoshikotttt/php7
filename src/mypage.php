@@ -148,20 +148,9 @@ $json_records = json_encode($row, JSON_UNESCAPED_UNICODE);
         </div>
     </footer>
     <script src="jquery-3.6.0.min.js"></script>
+    <script src="main.js"></script>
     <script>
         //モーダルの表示と非表示
-
-        function openModal(buttonSelector, modalSelector) {
-            $(buttonSelector).on("click", function() {
-                $('#overlay,' + modalSelector).fadeIn();
-            });
-        }
-
-        function closeModal(buttonSelector, modalSelector) {
-            $(buttonSelector).on('click', function() {
-                $('#overlay, ' + modalSelector).fadeOut();
-            });
-        }
         $(function() {
             openModal(".button-open1", '.modal-window1');
             closeModal(".close1", ".modal-window1");
